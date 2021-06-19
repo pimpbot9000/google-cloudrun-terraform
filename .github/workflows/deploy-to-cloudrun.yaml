@@ -26,4 +26,4 @@ jobs:
           export_default_credentials: true
 
       - name: Use gcloud CLI
-        run: run deploy app --project cloudrun-bumpbot9000 --image eu.gcr.io/cloudrun-bumpbot9000/helloworld 
+        run: gcloud run deploy app --project cloudrun-bumpbot9000 --image eu.gcr.io/cloudrun-bumpbot9000/helloworld 
