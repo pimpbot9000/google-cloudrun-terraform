@@ -30,7 +30,7 @@ jobs:
              #--tag=eu.gcr.io/${{ secrets.GCP_PROJECT_ID }}/helloworld:latest
 
       - name: Deploy
-        run: gcloud run deploy app --project ${{ secrets.GCP_PROJECT_ID }} \
-             --region us-central1 \ 
-             --image eu.gcr.io/${{ secrets.GCP_PROJECT_ID }}/helloworld
+        run: gcloud run deploy app --project=${{ secrets.GCP_PROJECT_ID }} \
+             --region=us-central1 \ 
+             --image=eu.gcr.io/${{ secrets.GCP_PROJECT_ID }}/helloworld
   
