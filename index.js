@@ -3,7 +3,7 @@ const app = express();
 
 app.get('/', (req, res) => {
   const name = process.env.NAME || 'World';
-  res.send(`Hello ${name}!`);
+  res.send(`Hello ${name}!!! I've been pushed to cloud with github actions`);
 });
 
 app.get('/health', (req, res) => {
