@@ -31,7 +31,7 @@ jobs:
              #--tag=eu.gcr.io/${{ secrets.GCP_PROJECT_ID }}/helloworld:latest
 
       - name: Deploy
-        run: gcloud run deploy app #--project=${{ secrets.GCP_PROJECT_ID }} \
+        run: gcloud run deploy app --image=eu.gcr.io/cloudrun-bumpbot9000/helloworld:latest #--project=${{ secrets.GCP_PROJECT_ID }} \
              #--region=us-central1 \ 
              #--image=eu.gcr.io/${{ secrets.GCP_PROJECT_ID }}/helloworld
   
