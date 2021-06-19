@@ -25,7 +25,5 @@ jobs:
         run: gcloud builds submit --tag "eu.gcr.io/$PROJECT_ID/$IMAGE_NAME:latest"     
 
       - name: Deploy
-        run: gcloud run deploy app --platform "managed" \ 
-             --image "eu.gcr.io/$PROJECT_ID/helloworld:latest" \
-             --region "us-central1" 
+        run: gcloud run deploy app --platform "managed" --image "eu.gcr.io/$PROJECT_ID/helloworld:latest" --region "us-central1" 
   
