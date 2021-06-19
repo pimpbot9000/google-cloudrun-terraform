@@ -1,0 +1,29 @@
+name: Build and deploy
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Deploy to Cloud Run
+#        id: deploy
+#        uses: google-github-actions/deploy-cloudrun@main
+#        with:
+#          service: hello-cloud-run 
+#          image: eu.gcr.io/${{env.PROJECT_ID}}/helloworld:latest
+#          credentials: ${{ secrets.GCP_SA_KEY }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
+
+      - name: Use gcloud CLI
+        run: gcloud info
