@@ -1,3 +1,7 @@
-# Google cloud run with terraform
+# Cloud Build
 
-An exercise project to set up cloudrun with terraform + github actions.
+`gcloud builds submit --project <cloud run name> --tag=eu.gcr.io/<image name>/helloworld:latest`
+
+# Deploy
+
+`gcloud run deploy app --project <project id> --image eu.gcr.io/<image name>/helloworld`
