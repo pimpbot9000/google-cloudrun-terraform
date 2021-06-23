@@ -1,7 +1,7 @@
-name: Build and deploy
+name: Echo
 on:
   push:
-    branches: [test-branch2]
+    branches: [master]
 
 jobs:
 
