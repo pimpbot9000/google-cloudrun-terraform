@@ -3,27 +3,13 @@ on:
   push:
     branches: [master]
 
-env:
-  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-  IMAGE_NAME: helloworld
-
 jobs:
 
-  deploy:
+  echo:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@master
-        with:
-          version: '290.0.1'
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
-          service_account_key: ${{ secrets.GCP_SA_KEY }}
-          export_default_credentials: true
-      - name: Push to Registry
-        run: gcloud builds submit --tag "eu.gcr.io/$PROJECT_ID/$IMAGE_NAME:latest"     
-
       - name: Deploy
-        run: gcloud run deploy app --platform "managed" --image "eu.gcr.io/$PROJECT_ID/helloworld:latest" --region "us-central1" 
+        run: echo "hello world!" 
   
