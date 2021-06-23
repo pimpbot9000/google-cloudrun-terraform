@@ -5,3 +5,4 @@
 # Deploy
 
 `gcloud run deploy app --project <project id> --image eu.gcr.io/<image name>/helloworld`
+
