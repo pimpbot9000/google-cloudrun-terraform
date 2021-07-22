@@ -1,7 +1,7 @@
 name: Echo
 on:
   push:
-    branches: [master]
+    branches: [test-branch-2]
 
 jobs:
 

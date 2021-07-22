@@ -35,7 +35,7 @@ resource "google_project_service" "run_api" {
 }
 
 resource "google_project_service" "cloubuild_api" {
-  service="cloudbuild.googleapis.com"
+  service = "cloudbuild.googleapis.com"
 }
 
 resource "google_cloud_run_service" "run_service" {
@@ -56,7 +56,7 @@ resource "google_cloud_run_service" "run_service" {
   }
 
   # Waits for the Cloud Run API to be enabled
-  depends_on = [google_project_service.run_api]
+  depends_on = [ google_project_service.run_api ]
 }
 
 resource "google_container_registry" "registry" {
@@ -74,21 +74,21 @@ resource "google_cloud_run_service_iam_member" "run_all_users" {
 }
 
 resource "google_dns_managed_zone" "parent-zone" {
-  provider = "google-beta"
+  //provider = "google-beta"
   name        = "my-zone"
   dns_name    = "my-zone.hashicorptest.com."
   description = "Test Description"
 }
 
 resource "google_dns_record_set" "resource-recordset" {
-  provider = "google-beta"
+  //provider = "google-beta"
   managed_zone = google_dns_managed_zone.parent-zone.name
   name         = "test-record.my-zone.hashicorptest.com."
   type         = "CNAME"
-  rrdatas      = [app-rprum7hb3a-uc.a.run.app]
+  rrdatas      = [google_cloud_run_service.run_service.status[0].url]
   ttl          = 86400
 }
 
 output "service_url" {
-  value = google_cloud_run_service.run_service.status[0].ip_address
+  value = google_cloud_run_service.run_service.status[0].url//.ip_address
 }
