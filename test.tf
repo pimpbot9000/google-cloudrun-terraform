@@ -47,14 +47,15 @@ resource "google_project_iam_member" "composer_worker" {
   member  = "serviceAccount:${google_service_account.github_actions_sa.email}"
 }
 */
-  
-/*resource "google_cloud_run_domain_mapping" "kindfull_backend_domain_mapping" {
+
+// Gives automatic cert
+/*resource "google_cloud_run_domain_mapping" "domain_mapping" {
   location = "europe-west1"
 
   name = local.backend_hostname
 
   spec {
-    route_name = google_cloud_run_service.kindfull_backend.name
+    route_name = google_cloud_run_service.run_service.name
   }
 
   metadata {
